@@ -6,7 +6,7 @@
 # Docling page-wise PDF converter
 Page-wise PDF converter built with Docling, offering modular and extensible conversion to various formats.
 
-[![Python Version](https://img.shields.io/badge/python-3.7+-blue.svg)](https://www.python.org/downloads/)
+[![Python Version](https://img.shields.io/badge/python-3.9+-blue.svg)](https://www.python.org/downloads/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 **Description:**
@@ -60,13 +60,6 @@ Page-wise PDF converter built with Docling, offering modular and extensible conv
 
     This will install `docling`, `docling-core`, `PyYAML`, and `pydantic` along with their dependencies.
 
-    **Manual Installation (Alternative):**
-
-    If you prefer to install dependencies manually, you need to install the following libraries using pip:
-
-    ```bash
-    pip install docling docling-core PyYAML pydantic
-    ```
     
 2.  **Using the `convert_pdf` function:**
 
