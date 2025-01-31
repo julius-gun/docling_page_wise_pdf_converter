@@ -1,0 +1,4 @@
+docling
+docling-core
+PyYAML
+pydantic
