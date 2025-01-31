@@ -26,23 +26,22 @@ Page-wise PDF converter built with Docling, offering modular and extensible conv
 **File Structure:**
 
 
-- [``]()
-  - [`docling-page-wise-pdf-converter`]()
-    - [`__init__.py`](__init__.py)
-    - [`content_manager.py`](content_manager.py)
-    - [`format_converters/`](format_converters/)
-      - [`__init__.py`](format_converters/__init__.py)
-      - [`base_converter.py`](format_converters/base_converter.py)
-      - [`csv_converter.py`](format_converters/csv_converter.py)
-      - [`html_converter.py`](format_converters/html_converter.py)
-      - [`json_converter.py`](format_converters/json_converter.py)
-      - [`markdown_converter.py`](format_converters/markdown_converter.py)
-      - [`txt_converter.py`](format_converters/txt_converter.py)
-      - [`xml_converter.py`](format_converters/xml_converter.py)
-      - [`yaml_converter.py`](format_converters/yaml_converter.py)
-    - [`pdf_converter.py`](pdf_converter.py)
-    - [`utils.py`](utils.py)
-    - [`README.md`](README.md)
+- [`docling-page-wise-pdf-converter`]()
+  - [`__init__.py`](__init__.py)
+  - [`content_manager.py`](content_manager.py)
+  - [`format_converters/`](format_converters/)
+    - [`__init__.py`](format_converters/__init__.py)
+    - [`base_converter.py`](format_converters/base_converter.py)
+    - [`csv_converter.py`](format_converters/csv_converter.py)
+    - [`html_converter.py`](format_converters/html_converter.py)
+    - [`json_converter.py`](format_converters/json_converter.py)
+    - [`markdown_converter.py`](format_converters/markdown_converter.py)
+    - [`txt_converter.py`](format_converters/txt_converter.py)
+    - [`xml_converter.py`](format_converters/xml_converter.py)
+    - [`yaml_converter.py`](format_converters/yaml_converter.py)
+  - [`pdf_converter.py`](pdf_converter.py)
+  - [`utils.py`](utils.py)
+  - [`README.md`](README.md)
 
 **Usage:**
 
@@ -115,25 +114,3 @@ Page-wise PDF converter built with Docling, offering modular and extensible conv
         for i, content in enumerate(plain_text_pages_4_10_11):
             print(f"Page { [4, 10, 11][i] } content:\n{content[:200]}...")
     ```
-
-**Dependencies:**
-
-*   [docling](https://pypi.org/project/docling/)
-*   [docling-core](https://pypi.org/project/docling-core/)
-*   Python 3.7+
-
-**License:**
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details (You can add a LICENSE file if you want to specify the license explicitly).
-
-**Contributing:**
-
-[Optional: Add information about how to contribute to the project if you wish.]
-
-**Contact:**
-
-[Optional: Add your contact information or repository link here.]
-
----
-
-This README provides a basic overview of the `Docling-page-wise-pdf-converter` package. You can expand it further with more detailed explanations, advanced usage examples, and contribution guidelines as needed.
