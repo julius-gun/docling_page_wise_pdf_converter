@@ -1,17 +1,20 @@
 # Core dependencies
-docling>=0.1.0
-docling-core>=0.1.0
+docling
+docling-core
 
 # Data processing and conversion
-pandas>=1.3.0
-pyyaml>=5.4.1
-beautifulsoup4>=4.9.3
+pandas
+pyyaml
+beautifulsoup4
 
 # Image processing
-Pillow>=8.0.0
+Pillow
 
 # XML processing
-lxml>=4.9.0  # for better XML/HTML handling
+lxml # for better XML/HTML handling
 
 # Type hints
-typing-extensions>=4.0.0
+typing-extensions
+
+# Select files in explorer view
+tkinter

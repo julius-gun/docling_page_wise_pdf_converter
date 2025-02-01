@@ -2,7 +2,7 @@
 from pathlib import Path
 from typing import Dict
 from docling_core.types.doc import TableItem, PictureItem, TextItem
-from format_converters.base_converter import BaseConverter
+from .base_converter import BaseConverter
 
 class TxtConverter(BaseConverter):
     def convert_to_format(self, doc, pdf_path: Path, output_dir: Path) -> Dict[int, str]:

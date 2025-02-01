@@ -8,12 +8,7 @@ from docling_core.types.doc import ImageRefMode, PictureItem, TableItem, TextIte
 import sys
 import os
 
-# # Get the directory containing docling-page-wise-pdf-converter
-# package_dir = os.path.dirname(os.path.abspath(__file__))
-# parent_dir = os.path.dirname(package_dir) # Go up one level to 'Docling'
-
-# # Add the parent directory to sys.path
-# sys.path.insert(0, parent_dir)
+# Change relative imports to absolute imports
 from content_manager import ContentManager
 from format_converters.markdown_converter import MarkdownConverter
 from format_converters.html_converter import HtmlConverter
@@ -28,15 +23,23 @@ class PdfConverter:
     """
     Converts PDF documents to various formats.
     """
-    def __init__(self, pdf_path: str, output_dir: str):
-        self.pdf_path = Path(pdf_path)
+    def __init__(self, source: str, output_dir: str):
+        self.source = source
         self.output_dir = Path(output_dir)
-        self.pdf_stem = self.pdf_path.stem
+        # Create a filename from URL or use local path
+        if '://' in source:
+            self.output_filename = Path(source.split('/')[-1])
+            if not self.output_filename.suffix:
+                self.output_filename = Path(f"{self.output_filename}.pdf")
+        else:
+            self.output_filename = Path(source)
+        
+        self.pdf_stem = self.output_filename.stem
         self.images_dir = self.output_dir / "images"
-        self.images_dir.mkdir(parents=True, exist_ok=True)
         self.content_manager = ContentManager(self.output_dir)
         self.converter = self._initialize_converter()
-        self.result = self.converter.convert(self.pdf_path)
+        # Direct conversion from source (works with both URLs and local files)
+        self.result = self.converter.convert(source)
         self.doc = self.result.document
         self.format_converters = {
             "markdown": MarkdownConverter(),
@@ -74,17 +77,18 @@ class PdfConverter:
             raise ValueError(f"Unsupported output format: {format_name}")
 
         converter = self.format_converters[format_name]
-        page_contents = converter.convert_to_format(self.doc, self.pdf_path, self.output_dir)
+        page_contents = converter.convert_to_format(self.doc, self.output_filename, self.output_dir)
         self.content_manager.save_content(self.pdf_stem, format_name, page_contents)
 
         # Save with original extension if applicable and desired (e.g., for markdown, html, txt, xml, csv, yaml)
         if format_name in ["markdown", "html", "txt", "json", "yaml", "csv", "xml"]:
-            converter.save_with_original_extension(page_contents, self.pdf_path, self.output_dir, self.doc) # Pass self.doc here
+            converter.save_with_original_extension(page_contents, self.output_filename, self.output_dir, self.doc) # Pass self.doc here
 
     def export_images(self) -> List[Path]:
         """Exports images from the document."""
+        self.images_dir.mkdir(parents=True, exist_ok=True)
         try:
-            doc_filename = self.pdf_path.stem
+            doc_filename = self.source.stem
             image_paths = []
 
             # Export page images
@@ -136,7 +140,7 @@ class PdfConverter:
 
     def convert_to_format(self, output_format: str):
         """Converts PDF to the specified format and exports images."""
-        # self.export_images()
+        # self.export_images() # Commented out to avoid exporting images multiple times
         self._convert_and_save_format(output_format)
 
     def get_page_content(self, output_format: str, page: int) -> Optional[str]:
@@ -146,11 +150,11 @@ class PdfConverter:
         return self.content_manager.get_page_content_plain_text(self.pdf_stem, output_format, page)
 
 
-def convert_pdf(pdf_path: str, output_dir: str, output_format: str = "all"):
+def convert_pdf(source: str, output_dir: str, output_format: str = "all"):
     """
     Converts PDF to multiple formats and export images.
     Args:
-        pdf_path: Path to the input PDF file
+        source: Path to the input PDF file or URL
         output_dir: Directory for output files
         output_format: The desired output format (e.g., "markdown", "html", "txt", "json", "yaml", "csv", "xml", or "all").
                        Defaults to "all".
@@ -158,7 +162,7 @@ def convert_pdf(pdf_path: str, output_dir: str, output_format: str = "all"):
     output_dir_path = Path(output_dir)
     output_dir_path.mkdir(parents=True, exist_ok=True)
 
-    converter = PdfConverter(pdf_path, output_dir)
+    converter = PdfConverter(source, output_dir)
     if output_format == "all":
         converter.convert_all()
     else:
@@ -167,9 +171,8 @@ def convert_pdf(pdf_path: str, output_dir: str, output_format: str = "all"):
 
 # Example usage:
 if __name__ == "__main__":
-    pdf_file = "EN-A148703540-2.pdf"  # Replace with your PDF file path
-    # output directory should be the pdf file name without the extension and with a trailing slash 
-    # the directory above the main directory 
+    pdf_file = "https://www.kvgportal.com/W_global/Media/lexcom/VN/A14870/A148703540-2.pdf"  # Replace with your PDF file path
+    
     output_directory = f"output/{Path(pdf_file).stem}/"
     convert_pdf(pdf_file, output_directory, output_format="all")
 

@@ -22,6 +22,7 @@ Page-wise PDF converter built with Docling, offering modular and extensible conv
 *   **Efficient Conversion Management:** Avoids redundant conversions by checking if a format has already been generated.
 *   **Extensible Architecture:** Easily add support for new output formats by implementing new converter classes.
 *   **Clean Code and Modular Design:** Follows clean code principles with well-separated modules for content management, format conversion, and core PDF processing.
+*   **Graphical User Interface (GUI):** Includes a simple GUI for easy file and directory selection.
 
 **File Structure:**
 
@@ -40,6 +41,7 @@ Page-wise PDF converter built with Docling, offering modular and extensible conv
     - [`xml_converter.py`](format_converters/xml_converter.py)
     - [`yaml_converter.py`](format_converters/yaml_converter.py)
   - [`pdf_converter.py`](pdf_converter.py)
+  - [`interactive_pdf_converter.py`](interactive_pdf_converter.py)  <- **NEW: GUI Script**
   - [`utils.py`](utils.py)
   - [`README.md`](README.md)
 
@@ -82,15 +84,32 @@ Page-wise PDF converter built with Docling, offering modular and extensible conv
 
     The converted files and an `images` folder (containing extracted images) will be saved in the `output_directory`.
 
-3.  **Getting Page Content in Plain Text:**
+3.  **Using the GUI (`pdf_converter_gui.py`):**
+
+    For users who prefer a graphical interface, a simple GUI script `pdf_converter_gui.py` is provided.
+
+    **To run the GUI:**
+
+    Navigate to the root directory of the `pdf_converter_package` in your terminal and run:
+
+    ```bash
+    python interactive_pdf_converter.py
+    ```
+
+    The script will:
+
+    *   Open a file dialog prompting you to select one or more PDF files for conversion.
+    *   After selecting files, it will open a directory dialog asking you to choose an output directory.
+    *   Once you've selected the output directory, the conversion process will start for each selected PDF file, converting them to all supported formats and saving the output in the chosen directory.
+    *   Conversion progress and completion will be logged in the console.
+
+4.  **Getting Page Content in Plain Text:**
 
     You can retrieve the plain text content of specific pages after conversion using the `get_page_content` method of the `PdfConverter` class, or directly using the `ContentManager`.
 
     **Example (using `ContentManager` after `convert_pdf` has been run):**
 
     ```python
-    from pdf_converter_package.content_manager import ContentManager
-    from pathlib import Path
 
     pdf_stem = Path(pdf_file).stem # Get the PDF filename without extension
     content_manager = ContentManager(Path(output_directory))

@@ -1,7 +1,7 @@
 # docling-page-wise-pdf-converter/format_converters/markdown_converter.py
 from pathlib import Path
 from typing import Dict
-from format_converters.base_converter import BaseConverter
+from .base_converter import BaseConverter
 
 class MarkdownConverter(BaseConverter):
     def convert_to_format(self, doc, pdf_path: Path, output_dir: Path) -> Dict[int, str]:

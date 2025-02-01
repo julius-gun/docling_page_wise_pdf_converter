@@ -2,7 +2,7 @@ from pathlib import Path
 from typing import Dict
 import re
 import xml.etree.ElementTree as ET  # Import ElementTree for HTML parsing
-from format_converters.base_converter import BaseConverter
+from .base_converter import BaseConverter
 from bs4 import BeautifulSoup
 
 

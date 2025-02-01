@@ -3,7 +3,7 @@ import csv
 from pathlib import Path
 from typing import Dict, List
 from docling_core.types.doc import TableItem, PictureItem, TextItem
-from format_converters.base_converter import BaseConverter
+from .base_converter import BaseConverter
 
 class CsvConverter(BaseConverter):
     def convert_to_format(self, doc, pdf_path: Path, output_dir: Path) -> Dict[int, List[Dict]]: # Return type is now Dict[int, List[Dict]]
