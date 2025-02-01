@@ -62,8 +62,27 @@ Page-wise PDF converter built with Docling, offering modular and extensible conv
 
     This will install `docling`, `docling-core`, `PyYAML`, and `pydantic` along with their dependencies.
 
+2.  **Using the GUI (`pdf_converter_gui.py`):**
+
+    For users who prefer a graphical interface, a simple GUI script `pdf_converter_gui.py` is provided.
+
+    **To run the GUI:**
+
+    Navigate to the root directory of the `docling_page_wise_pdf_converter` in your terminal and run:
+
+    ```bash
+    python interactive_pdf_converter.py
+    ```
+
+    The script will:
+
+    *   Open a file dialog prompting you to select one or more PDF files for conversion.
+    *   After selecting files, it will open a directory dialog asking you to choose an output directory.
+    *   Once you've selected the output directory, the conversion process will start for each selected PDF file, converting them to all supported formats and saving the output in the chosen directory.
+    *   Conversion progress and completion will be logged in the console.
     
-2.  **Using the `convert_pdf` function:**
+
+3.  **Using the `convert_pdf` function:**
 
     The main entry point for conversion is the `convert_pdf` function in `pdf_converter.py`.
 
@@ -83,25 +102,6 @@ Page-wise PDF converter built with Docling, offering modular and extensible conv
     ```
 
     The converted files and an `images` folder (containing extracted images) will be saved in the `output_directory`.
-
-3.  **Using the GUI (`pdf_converter_gui.py`):**
-
-    For users who prefer a graphical interface, a simple GUI script `pdf_converter_gui.py` is provided.
-
-    **To run the GUI:**
-
-    Navigate to the root directory of the `pdf_converter_package` in your terminal and run:
-
-    ```bash
-    python interactive_pdf_converter.py
-    ```
-
-    The script will:
-
-    *   Open a file dialog prompting you to select one or more PDF files for conversion.
-    *   After selecting files, it will open a directory dialog asking you to choose an output directory.
-    *   Once you've selected the output directory, the conversion process will start for each selected PDF file, converting them to all supported formats and saving the output in the chosen directory.
-    *   Conversion progress and completion will be logged in the console.
 
 4.  **Getting Page Content in Plain Text:**
 
