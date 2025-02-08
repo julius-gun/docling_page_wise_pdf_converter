@@ -87,7 +87,7 @@ Page-wise PDF converter built with Docling, offering modular and extensible conv
     The main entry point for conversion is the `convert_pdf` function in `pdf_converter.py`.
 
     ```python
-    from pdf_converter_package.pdf_converter import convert_pdf
+    from docling_page_wise_pdf_converter.pdf_converter import convert_pdf
 
     pdf_file = "path/to/your/pdf_file.pdf"  # Replace with your PDF file path
     output_directory = "output_folder"  # Replace with desired output directory

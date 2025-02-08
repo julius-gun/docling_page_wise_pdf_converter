@@ -9,14 +9,14 @@ import sys
 import os
 
 # Change relative imports to absolute imports
-from content_manager import ContentManager
-from format_converters.markdown_converter import MarkdownConverter
-from format_converters.html_converter import HtmlConverter
-from format_converters.txt_converter import TxtConverter
-from format_converters.json_converter import JsonConverter
-from format_converters.yaml_converter import YamlConverter
-from format_converters.csv_converter import CsvConverter
-from format_converters.xml_converter import XmlConverter
+from .content_manager import ContentManager
+from .format_converters.markdown_converter import MarkdownConverter
+from .format_converters.html_converter import HtmlConverter
+from .format_converters.txt_converter import TxtConverter
+from .format_converters.json_converter import JsonConverter
+from .format_converters.yaml_converter import YamlConverter
+from .format_converters.csv_converter import CsvConverter
+from .format_converters.xml_converter import XmlConverter
 
 
 class PdfConverter:
