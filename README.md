@@ -3,6 +3,7 @@
   <br>
 </p>
 
+
 # Docling page-wise PDF converter
 Page-wise PDF converter built with Docling, offering modular and extensible conversion to various formats.
 
@@ -12,6 +13,10 @@ Page-wise PDF converter built with Docling, offering modular and extensible conv
 **Description:**
 
 `Docling-page-wise-pdf-converter` is a Python package designed to convert PDF documents into various formats on a page-by-page basis. It leverages the `docling` library for document parsing and conversion, providing a modular and extensible way to extract content from PDFs and save it in formats like **Markdown, HTML, Plain Text, JSON, YAML, CSV, and XML**.
+<p align="center">
+  <img src="assets/diagram.jpg" alt="docu_llama" width="1500"/>
+  <br>
+</p>
 
 **Key Features:**
 
@@ -23,6 +28,8 @@ Page-wise PDF converter built with Docling, offering modular and extensible conv
 *   **Extensible Architecture:** Easily add support for new output formats by implementing new converter classes.
 *   **Clean Code and Modular Design:** Follows clean code principles with well-separated modules for content management, format conversion, and core PDF processing.
 *   **Graphical User Interface (GUI):** Includes a simple GUI for easy file and directory selection.
+
+
 
 **File Structure:**
 
@@ -87,7 +94,7 @@ Page-wise PDF converter built with Docling, offering modular and extensible conv
     The main entry point for conversion is the `convert_pdf` function in `pdf_converter.py`.
 
     ```python
-    from pdf_converter_package.pdf_converter import convert_pdf
+    from docling_page_wise_pdf_converter.pdf_converter import convert_pdf
 
     pdf_file = "path/to/your/pdf_file.pdf"  # Replace with your PDF file path
     output_directory = "output_folder"  # Replace with desired output directory
